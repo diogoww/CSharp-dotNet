@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ProductClientHub.Communication.Responses
+﻿namespace ProductClientHub.Communication.Responses
 {
-    internal class ResponseClientJson
+    public class ResponseClientJson
     {
+        public Guid Id { get; set; }
+        public string Name { get; set; }
     }
 }
