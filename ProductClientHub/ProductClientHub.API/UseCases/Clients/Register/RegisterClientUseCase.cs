@@ -14,7 +14,8 @@ namespace ProductClientHub.API.UseCases.Clients.Register
 
             if (result.IsValid == false)
             {
-                throw new ErrorOnValidationException("ERROS NOS DADOS RECEBIDOS");
+                var errors = result.Errors.Select(failure => failure.ErrorMessage).ToList();
+                throw new ErrorOnValidationException(errors);
             }
 
             return new ResponseClientJson();

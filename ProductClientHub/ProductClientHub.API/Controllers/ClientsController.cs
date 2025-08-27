@@ -25,7 +25,8 @@ namespace ProductClientHub.API.Controllers
                 return Created(string.Empty, response);
             }
             catch (ProductClientHubException e) {
-                return BadRequest(new ResponseErrorMessagesJson(e.Message));
+                var errors = e.GetErrors();
+                return BadRequest(new ResponseErrorMessagesJson(errors));
             }
             catch {
                 return StatusCode(StatusCodes.Status500InternalServerError, new ResponseErrorMessagesJson("ERRO DESCONHECIDO"));
