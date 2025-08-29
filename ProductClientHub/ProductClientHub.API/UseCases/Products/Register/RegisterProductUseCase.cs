@@ -11,14 +11,16 @@ namespace ProductClientHub.API.UseCases.Products.Register
     {
         public ResponseShortClientJson Execute(Guid clientId, RequestProductJson request)
         {
-            Validate(request);
-
             var dbContext = new ProductClientHubDbContext();
+
+            Validate(dbContext, clientId, request);
+
             var entity = new Product
             {
                 Name = request.Name,
                 Brand = request.Brand,
                 Price = request.Price,
+                CLientId = clientId
             };
 
             dbContext.Products.Add(entity);
@@ -31,8 +33,14 @@ namespace ProductClientHub.API.UseCases.Products.Register
             };
         }
 
-        private void Validate(RequestProductJson request)
+        private void Validate(ProductClientHubDbContext dbContext, Guid clientId, RequestProductJson request)
         {
+            var clientExist = dbContext.Clients.Any(client => client.Id == clientId);
+            if (clientExist == false)
+            {
+                throw new NotFoundException("Cliente não existe :(");
+            }
+
             var validator = new RequestProductValidator();
             var result = validator.Validate(request);
 
