@@ -10,7 +10,7 @@ namespace ProductClientHub.API.Infrastructure
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Data Source=C:\\Users\\Diogo\\Desktop\\CSharp + dotNet\\1737062251373-attachment.octet-stream");
+            optionsBuilder.UseSqlite("Data Source=C:\\Users\\diogow\\Desktop\\CSharp-dotNet\\1737062251373-attachment.octet-stream");
         }
     }
 }
