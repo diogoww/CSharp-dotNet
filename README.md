@@ -1,4 +1,4 @@
-# 🚀 ProductClientHub
+# 🚀 API REST Gerenciadora de produtos e clientes.
 
 ## 📋 Descrição
 
